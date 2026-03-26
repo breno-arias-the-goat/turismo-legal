@@ -1,65 +1,88 @@
-import Image from "next/image";
+import Link from 'next/link';
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div className="min-h-screen flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #EFF6FF 0%, #F0FDF4 100%)' }}>
+      <div className="max-w-2xl mx-auto px-6 py-20 text-center">
+        <div className="flex items-center justify-center gap-2 mb-8">
+          <div className="w-12 h-12 rounded-xl flex items-center justify-center" style={{ background: '#0066FF' }}>
+            <span className="text-white font-bold text-lg">TL</span>
+          </div>
+          <span className="font-bold text-3xl" style={{ color: '#111827' }}>Turismo Legal</span>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+
+        <h1 className="text-4xl font-bold mb-4" style={{ color: '#111827' }}>
+          Páginas de Vendas — Teste A/B
+        </h1>
+        <p className="text-lg mb-12" style={{ color: '#6B7280' }}>
+          Escolha qual página deseja visualizar para o teste de 90 dias
+        </p>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <Link
+            href="/vendas/teste-a"
+            className="group block bg-white rounded-2xl border-2 border-blue-100 p-8 hover:shadow-xl hover:border-blue-300 transition-all"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            <div className="text-4xl mb-4">💎</div>
+            <div className="inline-block px-2 py-1 rounded text-xs font-bold mb-3" style={{ background: '#DBEAFE', color: '#1D4ED8' }}>
+              TESTE A
+            </div>
+            <h2 className="text-xl font-bold mb-2" style={{ color: '#111827' }}>100% Pago</h2>
+            <p className="text-sm mb-4" style={{ color: '#6B7280' }}>
+              Foco em assinatura premium. CTA: &quot;Assinar Agora&quot;. Planos Gold e Black.
+            </p>
+            <div className="text-sm font-semibold group-hover:underline" style={{ color: '#0066FF' }}>
+              Abrir Página A →
+            </div>
+          </Link>
+
+          <Link
+            href="/vendas/teste-b"
+            className="group block bg-white rounded-2xl border-2 border-green-100 p-8 hover:shadow-xl hover:border-green-300 transition-all"
           >
-            Documentation
-          </a>
+            <div className="text-4xl mb-4">🎯</div>
+            <div className="inline-block px-2 py-1 rounded text-xs font-bold mb-3" style={{ background: '#D1FAE5', color: '#065F46' }}>
+              TESTE B
+            </div>
+            <h2 className="text-xl font-bold mb-2" style={{ color: '#111827' }}>Freemium</h2>
+            <p className="text-sm mb-4" style={{ color: '#6B7280' }}>
+              Foco em crédito consignado. CTA: &quot;Começar Grátis&quot;. Lead → Crédito → Upgrade.
+            </p>
+            <div className="text-sm font-semibold group-hover:underline" style={{ color: '#10B981' }}>
+              Abrir Página B →
+            </div>
+          </Link>
         </div>
-      </main>
+
+        <div className="mt-12 p-6 bg-white rounded-2xl border border-gray-100 text-left">
+          <h3 className="font-semibold mb-3" style={{ color: '#111827' }}>Diferenças Principais</h3>
+          <div className="overflow-x-auto">
+            <table className="w-full text-xs">
+              <thead>
+                <tr style={{ color: '#6B7280' }}>
+                  <th className="text-left py-2 pr-4">Aspecto</th>
+                  <th className="text-left py-2 pr-4" style={{ color: '#0066FF' }}>Teste A</th>
+                  <th className="text-left py-2" style={{ color: '#10B981' }}>Teste B</th>
+                </tr>
+              </thead>
+              <tbody className="text-gray-700">
+                {([
+                  ['Foco', 'Assinatura', 'Crédito Consignado'],
+                  ['CTA Principal', 'Assinar Agora', 'Começar Grátis'],
+                  ['Preço Destaque', 'R$ 165–250/mês', 'R$ 0 (grátis)'],
+                  ['Seções', '10 seções', '14 seções'],
+                ] as string[][]).map(([a, b, c]) => (
+                  <tr key={a} className="border-t border-gray-50">
+                    <td className="py-2 pr-4 font-medium">{a}</td>
+                    <td className="py-2 pr-4">{b}</td>
+                    <td className="py-2">{c}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
