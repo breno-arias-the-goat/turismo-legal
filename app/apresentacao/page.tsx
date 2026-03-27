@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import GrowthProjection from './components/GrowthProjection';
+import ProfitProjection from './components/ProfitProjection';
 
 /* ─── Intersection Observer Hook ──────────────────────────────── */
 function useInView(threshold = 0.15) {
@@ -164,7 +165,7 @@ export default function Apresentacao() {
           </div>
 
           <div className="hidden md:flex items-center gap-8">
-            {['Diagnóstico', 'Solução', 'Estratégia', 'Projeção', 'Roadmap', 'KPIs'].map((item) => (
+            {['Diagnóstico', 'Solução', 'Estratégia', 'Projeção', 'Lucros', 'Roadmap', 'KPIs'].map((item) => (
               <a key={item} href={`#${item.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')}`} className="text-sm transition-colors hover:text-white" style={{ color: '#64748B' }}>
                 {item}
               </a>
@@ -184,7 +185,7 @@ export default function Apresentacao() {
 
         {menuOpen && (
           <div className="md:hidden px-6 pb-4 flex flex-col gap-4" style={{ background: 'rgba(6,12,26,0.98)' }}>
-            {['Diagnóstico', 'Solução', 'Estratégia', 'Projeção', 'Roadmap', 'KPIs'].map((item) => (
+            {['Diagnóstico', 'Solução', 'Estratégia', 'Projeção', 'Lucros', 'Roadmap', 'KPIs'].map((item) => (
               <a key={item} href={`#${item.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')}`} onClick={() => setMenuOpen(false)} className="text-sm py-2" style={{ color: '#94A3B8' }}>
                 {item}
               </a>
@@ -591,6 +592,11 @@ export default function Apresentacao() {
 
       {/* ── PROJEÇÃO DE CRESCIMENTO ───────────────────────────── */}
       <GrowthProjection />
+
+      <div className="divider-glow max-w-7xl mx-auto" />
+
+      {/* ── PREVISÃO DE LUCROS ────────────────────────────────── */}
+      <ProfitProjection />
 
       <div className="divider-glow max-w-7xl mx-auto" />
 
