@@ -12,11 +12,26 @@ export default function Home() {
         </div>
 
         <h1 className="text-4xl font-bold mb-4" style={{ color: '#111827' }}>
-          Páginas de Vendas — Teste A/B
+          Turismo Legal
         </h1>
-        <p className="text-lg mb-12" style={{ color: '#6B7280' }}>
-          Escolha qual página deseja visualizar para o teste de 90 dias
+        <p className="text-lg mb-8" style={{ color: '#6B7280' }}>
+          Apresentação executiva e páginas de vendas do teste A/B de 90 dias
         </p>
+
+        <Link
+          href="/apresentacao"
+          className="block mb-8 rounded-2xl p-6 text-left hover:scale-[1.02] transition-transform"
+          style={{ background: 'linear-gradient(135deg, #060C1A 0%, #0D1526 100%)', border: '1px solid rgba(212,175,55,0.3)' }}
+        >
+          <div className="flex items-center gap-3 mb-3">
+            <span className="px-2 py-1 rounded text-xs font-bold" style={{ background: 'rgba(212,175,55,0.2)', color: '#D4AF37' }}>EXECUTIVO</span>
+          </div>
+          <h2 className="text-xl font-bold mb-1" style={{ color: '#ffffff' }}>Apresentação Executiva</h2>
+          <p className="text-sm mb-3" style={{ color: '#64748B' }}>Diagnóstico · Posicionamento · Estratégia A/B · Roadmap · KPIs</p>
+          <div className="text-sm font-semibold" style={{ color: '#D4AF37' }}>Abrir Apresentação →</div>
+        </Link>
+
+        <p className="text-sm font-semibold mb-4" style={{ color: '#6B7280' }}>Páginas de Vendas</p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <Link

@@ -8,38 +8,61 @@ interface FAQItem {
 
 interface FAQProps {
   items: FAQItem[];
+  theme?: 'light' | 'dark';
 }
 
-export default function FAQ({ items }: FAQProps) {
+export default function FAQ({ items, theme = 'light' }: FAQProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const isDark = theme === 'dark';
 
   return (
-    <div className="space-y-3">
-      {items.map((item, index) => (
-        <div
-          key={index}
-          className="border border-gray-200 rounded-xl overflow-hidden"
-        >
-          <button
-            className="w-full flex items-center justify-between px-6 py-5 text-left hover:bg-gray-50 transition-colors"
-            onClick={() => setOpenIndex(openIndex === index ? null : index)}
-            aria-expanded={openIndex === index}
-          >
-            <span className="font-semibold text-gray-800 pr-4">{item.question}</span>
-            <svg
-              className={`w-5 h-5 text-gray-500 flex-shrink-0 transition-transform duration-200 ${openIndex === index ? 'rotate-180' : ''}`}
-              fill="none" stroke="currentColor" viewBox="0 0 24 24"
+    <div className="divide-y" style={{ borderColor: isDark ? 'rgba(255,255,255,0.07)' : '#F3F4F6' }}>
+      {items.map((item, index) => {
+        const isOpen = openIndex === index;
+        return (
+          <div key={index}>
+            <button
+              className="w-full flex items-start justify-between py-5 text-left group"
+              onClick={() => setOpenIndex(isOpen ? null : index)}
+              aria-expanded={isOpen}
             >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7"/>
-            </svg>
-          </button>
-          {openIndex === index && (
-            <div className="px-6 pb-5 text-gray-600 text-sm leading-relaxed border-t border-gray-100 pt-4">
-              {item.answer}
+              <span
+                className="font-semibold text-[15px] pr-8 transition-colors duration-200 leading-snug"
+                style={{ color: isOpen
+                  ? (isDark ? '#ffffff' : '#0A0A0A')
+                  : (isDark ? 'rgba(255,255,255,0.7)' : '#374151')
+                }}
+              >
+                {item.question}
+              </span>
+              {/* +/× icon */}
+              <span
+                className="flex-shrink-0 w-7 h-7 rounded-full border flex items-center justify-center transition-all duration-200 mt-0.5"
+                style={{
+                  borderColor: isOpen ? '#0066FF' : (isDark ? 'rgba(255,255,255,0.15)' : '#E5E7EB'),
+                  background: isOpen ? 'rgba(0,102,255,0.1)' : 'transparent',
+                  color: isOpen ? '#0066FF' : (isDark ? 'rgba(255,255,255,0.4)' : '#9CA3AF'),
+                }}
+              >
+                <span className="text-[16px] leading-none font-light" style={{ lineHeight: '1' }}>
+                  {isOpen ? '×' : '+'}
+                </span>
+              </span>
+            </button>
+            <div
+              className="overflow-hidden transition-all duration-300 ease-in-out"
+              style={{ maxHeight: isOpen ? '400px' : '0px' }}
+            >
+              <p
+                className="pb-5 text-[14px] leading-relaxed"
+                style={{ color: isDark ? 'rgba(255,255,255,0.45)' : '#6B7280' }}
+              >
+                {item.answer}
+              </p>
             </div>
-          )}
-        </div>
-      ))}
+          </div>
+        );
+      })}
     </div>
   );
 }
